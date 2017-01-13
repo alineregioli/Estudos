@@ -8,9 +8,8 @@ using namespace std;
 const int N = 10004, H = 150, oo = 0x3f3f3f3f;
 
 int n, h, m, c, a, b, t, u, v, w, d, x, ans;
-int g[H][H], hotel[H], dist[N], visitado[H];
+int g[H][H], hotel[H], dist[N], visitado[H], ehHotel[N];
 vector< vector<pair<int,int> > > grafo;
-map<int, int> ehHotel;
 
 void Dijkstra(int x){
 	memset(dist,oo,sizeof dist);
@@ -40,7 +39,9 @@ int main(){
 	while(scanf("%d",&n),n){
 		scanf("%d",&h);
 		grafo.assign(n+3,vector< pair<int,int> >());
-		ehHotel.clear();
+		for(int i = 0; i <= n; i++){
+			ehHotel[i] = 0;
+		}
 		for(int i = 0; i < h; i++){
 			scanf("%d",&hotel[i]);
 			if(hotel[i] == 1 || hotel[i] == n){ //Nunca usará hoteis em cidades 1 e n
